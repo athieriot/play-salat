@@ -136,7 +136,22 @@ You can override mapping names and configure how salat does it's type hinting. r
 In the sample there is a custom `mongoContext`, partly because we need to add plays classloader to salat so it knows when to reload it's graters,
 but also so we can override all models id fields to be serialized to MongoDB's _id.
 
-- [Sample](https://github.com/leon/play-salat/tree/master/sample)
+## Testing
+For test purpose only, you can add the EmbedConnection trait to your tests classes
+
+It will provide a standalone instance of a MongoDB server using this project:
+
+ * https://github.com/michaelmosmann/embedmongo.flapdoodle.de
+
+By default, it will open a connection (before the test suite) on the port 12345 and close it (after that)
+You can change this default value by overriding embedConnectionPort() method
+
+At last, you may want to use this FakeApplication configuration :
+
+val FakeMongoApp = FakeApplication(additionalConfiguration = Map("mongodb.default.port" -> 12345),
+                                   additionalPlugins = Seq("se.radley.plugin.salat.SalatPlugin"))
+
+ - [Sample](https://github.com/leon/play-salat/tree/master/sample)
 
 ## Enums?
 If your using Scala Enumerations have a look at my play-enumeration project.

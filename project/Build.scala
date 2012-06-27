@@ -15,6 +15,7 @@ object ProjectBuild extends Build {
     libraryDependencies += "play" %% "play" % "2.0.2",
     libraryDependencies += "play" %% "play-test" % "2.0.2" % "test",
     libraryDependencies += "com.novus" %% "salat" % "0.0.8",
+    libraryDependencies += "com.github.athieriot" %% "specs2-embedmongo" % "0.2" % "test",
 
     publishMavenStyle := true,
     publishArtifact in Test := false,
